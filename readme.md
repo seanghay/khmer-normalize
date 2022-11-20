@@ -27,3 +27,11 @@ const result = reorderText("ស្រ្តី")
 ## References
 
 Thanks to [Trey314159/KhmerSyllableReordering](https://github.com/Trey314159/KhmerSyllableReordering)
+
+## Related
+
+- [khmercal](https://github.com/seanghay/khmercal)
+- [khmerword](https://github.com/seanghay/khmerword)
+- [khmernumber](https://github.com/seanghay/khmernumber)
+- [is-khmer](https://github.com/seanghay/is-khmer)
+- [split-khmer](https://github.com/seanghay/split-khmer)
