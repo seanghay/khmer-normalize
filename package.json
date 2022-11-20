@@ -1,6 +1,6 @@
 {
 	"name": "khmer-normalize",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"repository": "seanghay/khmer-normalize",
 	"description": "Normalize Khmer scripts into a form that searchable.",
 	"files": [
