@@ -31,7 +31,8 @@
 		"build": "tsup",
 		"build:dev": "tsup --watch",
 		"test": "vitest --run --coverage",
-		"test:dev": "vitest"
+		"test:dev": "vitest",
+		"prepublishOnly": "npm run build"
 	},
 	"devDependencies": {
 		"@vitest/coverage-c8": "^0.25.2",
