@@ -1,0 +1,44 @@
+{
+	"name": "khmer-normalize",
+	"version": "0.0.0",
+	"repository": "seanghay/khmer-normalize",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/main.js",
+	"module": "./dist/main.mjs",
+	"types": "./dist/main.d.ts",
+	"exports": {
+		".": {
+			"require": "./dist/main.js",
+			"import": "./dist/main.mjs"
+		}
+	},
+	"author": {
+		"name": "Seanghay Yath",
+		"email": "seanghay.dev@gmail.com",
+		"url": "https://github.com/seanghay"
+	},
+	"keywords": [
+		"khmer",
+		"cambodia",
+		"syllable-reordering",
+		"cambodian"
+	],
+	"license": "MIT",
+	"scripts": {
+		"build": "tsup",
+		"build:dev": "tsup --watch",
+		"test": "vitest --run --coverage",
+		"test:dev": "vitest"
+	},
+	"devDependencies": {
+		"@vitest/coverage-c8": "^0.25.2",
+		"c8": "latest",
+		"magic-string": "^0.26.7",
+		"tsup": "^6.5.0",
+		"tsx": "^3.12.1",
+		"typescript": "^4.9.3",
+		"vitest": "^0.25.2"
+	}
+}
