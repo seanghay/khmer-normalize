@@ -23,8 +23,7 @@ export function regularize(text: string): string {
 	text = text.replace(/\u17DD/g, "\u17D1"); // replace obsolete ATTHACAN ៝ with VIRIAM ៑
 	text = text.replace(/\u17D3/g, "\u17C6"); // replace deprecated BATHAMASAT ៓ with NIKAHIT ំ as error
 	text = text.replace(/\u17D8/g, "\u17D4\u179B\u17D4"); // replace deprecated trigraph ៘ with ។ល។
-	// text = text.replace(/\u17bb\u17d0/g, "\u17c9\u17d0"); // replace ុ ័ -> ៉ ័
-	// text = text.replace(/\u17bb\u17c6/g, "\u17c9\u17c6"); // replace ុ ំ -> ៉ ំ
+
 	return text;
 }
 
@@ -44,19 +43,21 @@ export function reorderSyllable(s: string) {
 
 	let m: RegExpExecArray | null;
 
+	const regexOf = (p: string) =>  new RegExp(p, 'g');
+
 	while ((m = chunkOrCharPat.exec(sub))) {
 		let chunk = m[0];
-		if (chunk.match(depVowel)) {
+		if (chunk.match(regexOf(depVowel))) {
 			depVowelChunks.push(chunk);
 		} else if (chunk.startsWith(coeng)) {
 			// remove duplicate coengs, if any
 			chunk = chunk.replace(new RegExp(coeng + "+", "g"), coeng);
 			coengChunks.push(chunk);
-		} else if (chunk.match(nonSpacing)) {
+		} else if (chunk.match(regexOf(nonSpacing))) {
 			nonSpacingChunks.push(chunk);
-		} else if (chunk.match(spacing)) {
+		} else if (chunk.match(regexOf(spacing))) {
 			spacingChunks.push(chunk);
-		} else if (chunk.match(regShifter)) {
+		} else if (chunk.match(regexOf(regShifter))) {
 			regShifterChunks.push(chunk);
 		} else if (chunk === robat) {
 			robatChunks.push(chunk);
@@ -82,7 +83,9 @@ export function reorderSyllable(s: string) {
 	return dedupeArray(allChunks)
 		.replace(/\u17C1\u17B8/g, "\u17BE") // replace េ + ី with ើ
 		.replace(/\u17B8\u17C1/g, "\u17BE") // replace ី + េ with ើ
-		.replace(/\u17C1\u17B6/g, "\u17C4"); // replace េ + ា  with ោ
+		.replace(/\u17C1\u17B6/g, "\u17C4") // replace េ + ា  with ោ
+		.replace(/\u17bb\u17d0/g, "\u17c9\u17d0") // replace ុ ័ -> ៉ ័
+		.replace(/\u17bb\u17c6/g, "\u17c9\u17c6"); // replace ុ ំ -> ៉ ំ
 }
 
 export function reorderText(s: string) {
@@ -98,4 +101,3 @@ export function reorderText(s: string) {
 	}
 	return s;
 }
-
